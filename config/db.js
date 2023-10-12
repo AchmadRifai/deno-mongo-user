@@ -22,7 +22,7 @@ export const dbTrans = async (exec = async (_ = new mongo.Db()) => { }) => {
     try {
         await cli.connect()
         const mu = new Mutex()
-        mu.acquire()
+        await mu.acquire()
         const session = cli.startSession()
         try {
             session.startTransaction()
